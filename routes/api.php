@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\VideoController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/video/{id}', function($id){
-    $url = Storage::path("Videos/$id.mp4");
-    return response()->file($url);
+Route::prefix('video')->group(function () {
+    Route::get('/{type}/{id}', [VideoController::class, 'show']);
 });
