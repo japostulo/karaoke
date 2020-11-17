@@ -9,8 +9,8 @@ class VideoController extends Controller
 {
     public function show($type, $id)
     {   
-        if(Storage::exists("video/$type/$id.mp4")){
-            $url = Storage::path("video/$type/$id.mp4");
+        if(Storage::exists("videos/$type/$id.mp4")){
+            $url = Storage::path("videos/$type/$id.mp4");
             return response()->file($url);
         }
         return response()->json(['err' => true]);
