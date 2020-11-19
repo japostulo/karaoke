@@ -13,7 +13,6 @@ class VideoController extends Controller
             $url = Storage::path("videos/$type/$id.mp4");
             return response()->file($url);
         }
-        return response()->json(['err' => true]);
-        
+        return response()->json(['err' => true], 404);
     }
 }
